@@ -34,8 +34,9 @@ post '/sign_in' do
   erb :sign_in
 end
 
-post '/signup' do
-  erb :signup
+post '/sign_up' do
+  puts "my params" + params.inspect
+  erb :sign_up
 end
 
 def current_user
