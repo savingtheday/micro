@@ -22,20 +22,20 @@ get '/following' do
   erb :following
 end
 
-get '/sign-in' do
+post '/sign_in' do
   @user =User.where(email: params[:email]).first
   if @user && @user.password == params[:password]
     session[:user_id] = @user.id
     redirect '/'
   else
     @message = "Incorrect Sign-in Information."
-    redirect '/sign-in'
+    redirect '/sign_in'
   end
-  erb :modal
+  erb :sign_in
 end
 
-get '/sign-up' do
-  erb :modal
+post '/signup' do
+  erb :signup
 end
 
 def current_user
