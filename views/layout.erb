@@ -4,7 +4,15 @@
     <title></title>
   </head>
   <body>
-    <h1>Contact US</h1>
+  <header>
+  <% if current_user %>
+    <h1>
+      Hello <%= current_user.username %> | <a href=" /signout">sign out</a>
+    </h1>
+    <%else%>
+      <a href ="/signin">sign in</a>
+    <% end %>
+    </header>
     <%= yield %>
   </body>
 </html>

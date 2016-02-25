@@ -10,7 +10,6 @@ require './models/posts'
 require './models/users'
 
 get '/' do
-  current_user
   erb :fullprofile
 end
 
@@ -60,6 +59,7 @@ end
 
 
 post '/sign_up' do
+  @user = User.create(username:, email:, password:, birthday:)
   erb :sign_up
 end
 
@@ -79,6 +79,11 @@ end
 
 get '/new_post' do
   erb :newpost
+end
+
+get '/signout' do
+    session[:user_id] = nil
+    redirect to ('/sign_in')
 end
 
 def current_user
