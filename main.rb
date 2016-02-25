@@ -34,6 +34,14 @@ post '/sign_in' do
   erb :sign_in
 end
 
+get '/sign_up'
+  erb :sign_up
+end
+
+get 'sign_in'
+  erb :sign_in
+end
+
 post '/sign_up' do
   puts "my params" + params.inspect
   erb :sign_up
