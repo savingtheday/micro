@@ -38,8 +38,12 @@ get '/sign_up' do
   erb :sign_up
 end
 
-get 'sign_in' do
+get '/sign_in' do
   erb :sign_in
+end
+
+get 'sign_up_success' do
+  erb :sign_up_success
 end
 
 post '/sign_up' do
