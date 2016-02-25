@@ -63,6 +63,24 @@ post '/sign_up' do
   erb :sign_up
 end
 
+get '/post_success' do
+  erb :signupsuccess
+end
+
+post '/post_success' do
+  puts "my params" + params.inspect
+  erb :signupsuccess
+end
+
+
+post '/new_post' do
+  erb :newpost
+end
+
+get '/new_post' do
+  erb :newpost
+end
+
 def current_user
   if session[:user_id]
     @current_user = User.find(session[:user_id])
