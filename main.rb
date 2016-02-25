@@ -22,16 +22,23 @@ get '/following' do
   erb :following
 end
 
+post '/following' do
+  erb :following
+end
+
 post '/sign_in' do
-  @user =User.where(email: params[:email]).first
+  @user =User.where(username: params[:username]).first
   if @user && @user.password == params[:password]
     session[:user_id] = @user.id
     redirect '/'
   else
     @message = "Incorrect Sign-in Information."
-    redirect '/sign_in'
+    redirect '/incorrect'
   end
-  erb :sign_in
+end
+
+get '/incorrect' do
+  erb :incorrect
 end
 
 get '/sign_up' do
@@ -42,12 +49,17 @@ get '/sign_in' do
   erb :sign_in
 end
 
-get 'sign_up_success' do
-  erb :sign_up_success
+get '/sign-up-success' do
+  erb :signupsuccess
 end
 
-post '/sign_up' do
+post '/sign-up-success' do
   puts "my params" + params.inspect
+  erb :signupsuccess
+end
+
+
+post '/sign_up' do
   erb :sign_up
 end
 
