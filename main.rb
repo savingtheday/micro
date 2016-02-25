@@ -35,7 +35,8 @@ get '/sign-in' do
 end
 
 get '/sign-up' do
-  erb :modal
+  erb :sign_up
+
 end
 
 def current_user
