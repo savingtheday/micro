@@ -19,6 +19,7 @@ get '/feed' do
 end
 
 get '/following' do
+  "Hello"
   erb :following
 end
 
@@ -34,9 +35,9 @@ get '/sign-in' do
   erb :modal
 end
 
-get '/sign-up' do
-  erb :sign_up
-
+post '/signup' do
+  puts "my cool params" + params.inspect
+  #erb :modal
 end
 
 def current_user
