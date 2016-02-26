@@ -94,16 +94,20 @@ post '/change_profile' do
 end
 
 
+#make a new post
 
 
 get '/post_success' do
-  erb :signupsuccess
+  erb :postsuccess
 end
 
 post '/post_success' do
-  puts "my params" + params.inspect
-  erb :signupsuccess
+  @user_id = current_user.id
+  @new_post = params[:message]
+  Post.create(message: @new_post, user_id: @user_id)
+  redirect '/'
 end
+
 
 
 post '/new_post' do
@@ -113,6 +117,12 @@ end
 get '/new_post' do
   erb :newpost
 end
+
+
+
+
+
+
 
 get '/signout' do
     session[:user_id] = nil
