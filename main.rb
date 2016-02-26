@@ -134,6 +134,15 @@ get '/profile' do
 end
 
 
+#delete account
+
+
+
+get '/delete' do
+  current_user
+  @current_user.destroy
+  redirect '/signout'
+end
 
 
 
