@@ -1,5 +1,4 @@
-<% @posts.each do |post| %>
+<% @posts.last(10).each do |post| %>
  <%= post.message %>
 <% end %>
 
-<p> hello </p>
