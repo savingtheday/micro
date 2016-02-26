@@ -1,17 +1,23 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title></title>
+    <title>Spice Chat</title>
+    <link rel="stylesheet" type="text/css" href="css/normal.css">
+    <link rel="stylesheet" type="text/css" href="css/home.css">
   </head>
   <body>
   <header>
-  <% if current_user %>
-    <h1>
-      Hello <%= current_user.username %> | <a href=" /signout">sign out</a>
-    </h1>
-    <%else%>
-      <a href ="/sign_in">sign in</a>
-    <% end %>
+  <div id="headerContainer">
+    <div id="signInHeader">
+      <% if current_user %>
+        <h1>
+          Hello <%= current_user.username %> | <a href=" /signout">sign out</a>
+        </h1>
+        <%else%>
+          <a href ="/sign_in">sign in</a>
+        <% end %>
+    </div>
+  </div>
     </header>
     <%= yield %>
   </body>

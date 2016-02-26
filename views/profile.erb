@@ -1,0 +1,18 @@
+
+
+
+<div id="container">
+
+
+</div>
+
+
+
+
+  <% if current_user %>
+    <h1>
+      Hello <%= current_user.username %> | <a href=" /signout">sign out</a>
+    </h1>
+    <%else%>
+      <a href ="/sign_in">sign in</a>
+    <% end %>

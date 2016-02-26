@@ -59,18 +59,41 @@ post '/sign-up-success' do
   @user_password = params["password"]
   @user_birthday = params["birthday"]
   User.create(username: @user_name, email: @user_email, password: @user_password, birthday: @user_birthday)
-  redirect '/sign_in'
+  redirect '/'
 end
 
 
-# post '/sign_up' do
-#   @user = User.create(username:, email:, password:, birthday:)
-#   erb :sign_up
-# end
 
 post '/sign_up' do
   redirect '/sign-up-success'
 end
+
+
+#change user's profile info
+
+get '/change-profile-success' do
+  erb :profilesuccess
+end
+
+post '/change-profile-success' do
+  current_user
+  @user_name = params[:username]
+  @user_email = params[:email]
+  @user_password = params[:password]
+  @user_birthday = params[:birthday]
+  @current_user.update(username: @user_name, email: @user_email, password: @user_password, birthday: @user_birthday)
+  redirect '/'
+end
+
+get '/change_profile' do
+  erb :change
+end
+
+post '/change_profile' do
+  redirect '/change-profile-success'
+end
+
+
 
 
 get '/post_success' do
@@ -95,6 +118,15 @@ get '/signout' do
     session[:user_id] = nil
     redirect to ('/sign_in')
 end
+
+get '/profile' do
+  erb :profile
+end
+
+
+
+
+
 
 def current_user
   if session[:user_id]

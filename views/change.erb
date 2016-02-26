@@ -1,0 +1,20 @@
+  <% if current_user %>
+    <h1>
+      Hello <%= current_user.username %> | <a href=" /signout">sign out</a>
+    </h1>
+    <%else%>
+      <a href ="/sign_in">sign in</a>
+    <% end %>
+
+
+<form method="POST" action="/change-profile-success">
+  <label for="username"> Username</label>
+  <input type="text" value=<%= current_user.username %> name="username">
+  <label for="password">Password</label>
+  <input type="password" value=<%= current_user.password %> name="password">
+  <label for="email">Email</label>
+  <input type="text" value=<%= current_user.email %> name="email">
+  <label for="birthday">Birthday</label>
+  <input type="text" value=<%= current_user.birthday %> name="birthday">
+  <input type="submit">
+</form>
