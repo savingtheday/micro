@@ -10,7 +10,8 @@ require './models/posts'
 require './models/users'
 
 get '/' do
-  erb :fullprofile
+  @users = User.all
+  erb :index
 end
 
 get '/feed' do
@@ -66,7 +67,8 @@ end
 post '/sign_up' do
   user_name = params[:username]
   user_email = params [:email]
-  User.create(username: user_name, email: user_email)
+  user_password = params [:password]
+  User.create(username: user_name, email: user_email, password: user_password)
   redirect to('/sign-up-success')
 end
 
