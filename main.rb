@@ -58,10 +58,20 @@ post '/sign-up-success' do
 end
 
 
+# post '/sign_up' do
+#   @user = User.create(username:, email:, password:, birthday:)
+#   erb :sign_up
+# end
+
 post '/sign_up' do
-  @user = User.create(username:, email:, password:, birthday:)
-  erb :sign_up
+  user_name = params[:username]
+  user_email = params [:email]
+  User.create(username: user_name, email: user_email)
+  redirect to('/sign-up-success')
 end
+
+
+
 
 get '/post_success' do
   erb :signupsuccess
