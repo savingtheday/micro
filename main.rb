@@ -14,6 +14,11 @@ get '/' do
 end
 
 get '/feed' do
+  blogs
+  erb :feed
+end
+
+post '/feed' do
   erb :feed
 end
 
@@ -104,7 +109,7 @@ end
 post '/post_success' do
   @user_id = current_user.id
   @new_post = params[:message]
-  Post.create(message: @new_post, user_id: @user_id)
+  Post.create(message: @new_post, user_id: @user_id, posted: Time.now)
   redirect '/'
 end
 
@@ -145,7 +150,9 @@ get '/delete' do
 end
 
 
-
+def blogs
+  @posts = Post.all
+end
 
 def current_user
   if session[:user_id]
