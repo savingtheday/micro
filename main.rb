@@ -12,6 +12,9 @@ require './models/users'
 
 ################### GETS ################
 get '/' do
+  current_user
+  @user_id = current_user.id
+  @post = Post.where(user_id: @user_id)
   erb :fullprofile
 end
 
@@ -133,6 +136,7 @@ end
 
 
 ###### HELPERS #######
+
 
 def blogs
   @posts = Post.all

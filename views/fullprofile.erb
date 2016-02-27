@@ -1,0 +1,20 @@
+
+<!-- left column -->
+<H1> Welcome <%= @current_user.username %> </H1>
+  <p><%= @current_user.email %></p>
+  <p><%= @current_user.birthday %></p>
+  <a href ="/change_profile">edit</a>
+
+<!-- Right column -->
+<H2> Posts of <%= @current_user.username %> </H2>
+      <% @post.each do |post| %>
+      <div id = "posts">
+      <p><%= post.message %></p>
+      </div>
+      <% end %>
+
+
+      <!-- <div id = "posts">
+        <p><%= @post.message %></p>
+        </div> -->
+      <a href ="/signout">signout</a>
