@@ -12,10 +12,7 @@ require './models/users'
 
 ################### GETS ################
 get '/' do
-  current_user
-  @user_id = current_user.id
-  @post = Post.where(user_id: @user_id)
-  erb :fullprofile
+  erb :profile
 end
 
 get '/change_profile' do
@@ -40,6 +37,13 @@ end
 get '/followers' do
   current_user
   erb :followers
+end
+
+get '/fullprofile' do
+  current_user
+  @user_id = current_user.id
+  @post = Post.where(user_id: @user_id)
+  erb :fullprofile
 end
 
 get '/incorrect' do
@@ -113,7 +117,7 @@ post '/sign_in' do
   @user =User.where(username: params[:username]).first
   if @user && @user.password == params[:password]
     session[:user_id] = @user.id
-    redirect '/'
+    redirect '/feed'
   else
     @message = "Incorrect Sign-in Information."
     redirect '/incorrect'
