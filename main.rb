@@ -9,8 +9,24 @@ set :database, "sqlite3:microblog.sqlite3"
 require './models/posts'
 require './models/users'
 
+
+################### GETS ################
 get '/' do
   erb :fullprofile
+end
+
+get '/change_profile' do
+  erb :change
+end
+
+get '/change-profile-success' do
+  erb :profilesuccess
+end
+
+get '/delete' do
+  current_user
+  @current_user.destroy
+  redirect '/signout'
 end
 
 get '/feed' do
@@ -18,16 +34,76 @@ get '/feed' do
   erb :feed
 end
 
+get '/followers' do
+  current_user
+  erb :followers
+end
+
+get '/incorrect' do
+  erb :incorrect
+end
+
+get '/new_post' do
+  erb :newpost
+end
+
+get '/post_success' do
+  erb :postsuccess
+end
+
+get '/profile' do
+  erb :profile
+end
+
+get '/sign_in' do
+  @users = User.all
+  erb :sign_in
+end
+
+get '/signout' do
+    session[:user_id] = nil
+    redirect to ('/sign_in')
+end
+
+get '/sign_up' do
+  erb :sign_up
+end
+
+
+get '/sign-up-success' do
+  erb :signupsuccess
+end
+
+
+
+############## POSTS ############
 post '/feed' do
   erb :feed
 end
 
-get '/following' do
-  erb :following
+post '/change_profile' do
+  redirect '/change-profile-success'
 end
 
-post '/following' do
-  erb :following
+post '/change-profile-success' do
+  current_user
+  @user_name = params[:username]
+  @user_email = params[:email]
+  @user_password = params[:password]
+  @user_birthday = params[:birthday]
+  @current_user.update(username: @user_name, email: @user_email, password: @user_password, birthday: @user_birthday)
+  redirect '/'
+end
+
+post '/new_post' do
+  erb :newpost
+end
+
+post '/post_success' do
+  @user_id = current_user.id
+  @new_post = params[:message]
+  Post.create(message: @new_post, user_id: @user_id, posted: Time.now)
+  redirect '/'
 end
 
 post '/sign_in' do
@@ -41,21 +117,8 @@ post '/sign_in' do
   end
 end
 
-get '/incorrect' do
-  erb :incorrect
-end
-
-get '/sign_up' do
-  erb :sign_up
-end
-
-get '/sign_in' do
-  @users = User.all
-  erb :sign_in
-end
-
-get '/sign-up-success' do
-  erb :signupsuccess
+post '/sign_up' do
+  redirect '/sign-up-success'
 end
 
 post '/sign-up-success' do
@@ -69,86 +132,7 @@ end
 
 
 
-post '/sign_up' do
-  redirect '/sign-up-success'
-end
-
-
-#change user's profile info
-
-get '/change-profile-success' do
-  erb :profilesuccess
-end
-
-post '/change-profile-success' do
-  current_user
-  @user_name = params[:username]
-  @user_email = params[:email]
-  @user_password = params[:password]
-  @user_birthday = params[:birthday]
-  @current_user.update(username: @user_name, email: @user_email, password: @user_password, birthday: @user_birthday)
-  redirect '/'
-end
-
-get '/change_profile' do
-  erb :change
-end
-
-post '/change_profile' do
-  redirect '/change-profile-success'
-end
-
-
-#make a new post
-
-
-get '/post_success' do
-  erb :postsuccess
-end
-
-post '/post_success' do
-  @user_id = current_user.id
-  @new_post = params[:message]
-  Post.create(message: @new_post, user_id: @user_id, posted: Time.now)
-  redirect '/'
-end
-
-
-
-post '/new_post' do
-  erb :newpost
-end
-
-get '/new_post' do
-  erb :newpost
-end
-
-
-
-
-
-
-
-get '/signout' do
-    session[:user_id] = nil
-    redirect to ('/sign_in')
-end
-
-get '/profile' do
-  erb :profile
-end
-
-
-#delete account
-
-
-
-get '/delete' do
-  current_user
-  @current_user.destroy
-  redirect '/signout'
-end
-
+###### HELPERS #######
 
 def blogs
   @posts = Post.all

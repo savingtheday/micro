@@ -16,3 +16,9 @@
     <%else%>
       <a href ="/sign_in">sign in</a>
     <% end %>
+
+
+    <form method="POST" action="/follow">
+      <input hidden name="clicked_user" value="<%= @clicked_user.username%>"/>
+      <button class="user_click">Follow <%= @clicked_user.username %></button>
+    </form>
