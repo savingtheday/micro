@@ -1,0 +1,119 @@
+body{
+  color: white;
+  background-color: #308BC4;
+ font-family: 'Montserrat', sans-serif;
+
+}
+
+a:link{
+  text-decoration: none;
+  colror: #BADF44;
+}
+
+a:visited{
+  text-decoration: none;
+}
+
+/* header */
+
+#headerContainer{
+  background-color: #FD3A66;
+}
+
+#mainTitle{
+  height: 190px;
+  background-image: url('/images/backgroundHeader.png');
+/*  background-size: 100%;
+  background-repeat: no-repeat;*/
+  text-align: center;
+}
+
+#spice{
+  font-family: 'Leckerli One', cursive;
+  font-size: 150px;
+}
+
+#chat{
+  font-family: 'Leckerli One', cursive;
+  font-size: 150px;
+}
+
+#signInHeader{
+  font-family: 'Montserrat', sans-serif;
+  text-align: right;
+  padding-bottom: 1px;
+  padding-right: 10px;
+  font-size: 12px;
+}
+
+
+/*body*/
+
+#container{
+  width: 100%;
+  height: 100%;
+  text-align: center;
+}
+
+
+#leftColumn{
+  color: #308BC4;
+  background-color: white;
+  width: 35%;
+  margin: 5% 7% 5% 5%;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  float: left;
+}
+
+
+.leftHeader{
+  font-family: 'Leckerli One', cursive;
+  font-size: 40px;
+  color: #FEAA23;
+}
+
+#rightColumn{
+  color: #308BC4;
+  background-color: white;
+  width: 35%;
+  margin: 5% 5% 2.5% 5%;
+  padding: 10px;
+  text-align: center;
+  display: inline-block;
+  float: left;
+}
+
+
+.rightHeader{
+  font-family: 'Leckerli One', cursive;
+  font-size: 40px;
+  color: #BADF44;
+}
+
+#posts{
+  padding: 10px;
+}
+
+#centerColumn{
+  background-color: white;
+  color: #308BC4;
+  width: 89%;
+  margin: 5%;
+  text-align: center;
+  padding: 10px;
+}
+
+/*footer*/
+
+#footer{
+  height: 20px;
+  width: 100%;
+  background-image: url('/images/backgroundHeader.png');
+/*  background-size: 100%;
+  background-repeat: no-repeat;*/
+  text-align: center;
+  position: fixed;
+  bottom: 0;
+}

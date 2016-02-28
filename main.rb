@@ -99,7 +99,7 @@ post '/change-profile-success' do
   @user_password = params[:password]
   @user_birthday = params[:birthday]
   @current_user.update(username: @user_name, email: @user_email, password: @user_password, birthday: @user_birthday)
-  redirect '/'
+  redirect '/fullprofile'
 end
 
 post '/new_post' do
@@ -110,14 +110,14 @@ post '/post_success' do
   @user_id = current_user.id
   @new_post = params[:message]
   Post.create(message: @new_post, user_id: @user_id, posted: Time.now)
-  redirect '/'
+  redirect '/feed'
 end
 
 post '/sign_in' do
   @user =User.where(username: params[:username]).first
   if @user && @user.password == params[:password]
     session[:user_id] = @user.id
-    redirect '/feed'
+    redirect '/fullprofile'
   else
     @message = "Incorrect Sign-in Information."
     redirect '/incorrect'

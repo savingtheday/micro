@@ -4,10 +4,15 @@
     <title>Spice Chat</title>
     <link rel="stylesheet" type="text/css" href="css/normal.css">
     <link rel="stylesheet" type="text/css" href="css/home.css">
+    <link href='https://fonts.googleapis.com/css?family=Leckerli+One' rel='stylesheet' type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:700' rel='stylesheet' type='text/css'>
   </head>
   <body>
   <header>
   <div id="headerContainer">
+    <div id="mainTitle">
+      <span id="spice">Spice</span>   <span id="chat">Chat</span>
+    </div>
     <div id="signInHeader">
       <% if current_user %>
         <h1>
@@ -18,7 +23,13 @@
         <% end %>
     </div>
   </div>
+
+
+
     </header>
     <%= yield %>
+    <div id="footer">
+
+    </div>
   </body>
 </html>

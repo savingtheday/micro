@@ -1,0 +1,20 @@
+<div class="followList">
+  <% current_user.followers.each do |user| %>
+    <div class="post_username">
+      <form method="POST" action="/other">
+        <input hidden name="clicked_user" value="<%= user.username%>"/>
+        <button class="user_click"><h3><%= user.username %></h3></button>
+      </form>
+    </div>
+  <% end %>
+</div>
+<div class="followList">
+  <% current_user.follows.each do |user| %>
+    <div class="post_username">
+      <form method="POST" action="/other">
+        <input hidden name="clicked_user" value="<%= user.username%>"/>
+        <button class="user_click"><h3><%= user.username %></h3></button>
+      </form>
+    </div>
+  <% end %>
+</div>

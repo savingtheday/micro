@@ -1,20 +1,24 @@
+<div id="container">
 
-<!-- left column -->
-<H1> Welcome <%= @current_user.username %> </H1>
-  <p><%= @current_user.email %></p>
-  <p><%= @current_user.birthday %></p>
-  <a href ="/change_profile">edit</a>
+  <div id="leftColumn">
 
+    <!-- left column -->
+    <span class="leftHeader"> Welcome, <%= @current_user.username %> </span>
+      <p>Email: <%= @current_user.email %></p>
+      <p>Birthday: <%= @current_user.birthday %></p>
+      <p><a href ="/change_profile">change your profile</a></p>
+
+  </div>
+
+  <div id="rightColumn">
 <!-- Right column -->
-<H2> Posts of <%= @current_user.username %> </H2>
+    <span class="rightHeader"> <%= @current_user.username %>'s Posts </span>
       <% @post.each do |post| %>
       <div id = "posts">
-      <p><%= post.message %></p>
+      <p><%= post.message %> at <%= post.posted %></p>
       </div>
       <% end %>
 
+  </div>
 
-      <!-- <div id = "posts">
-        <p><%= @post.message %></p>
-        </div> -->
-      <a href ="/signout">signout</a>
+</div>
