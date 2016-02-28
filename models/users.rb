@@ -1,10 +1,10 @@
 class User < ActiveRecord::Base
   has_many :posts
 
-  # Adds user to relationship table when they follow another user.
+  # when they follow another user
   has_many :relationship, foreign_key: :follows_id
   has_many :followed, through: :relationships, source: :followed
-  # Adds user to relationship table when they are followed by a user.
+  # followed by a user
   has_many :reverse_relationships, foreign_key: :follower_id, class_name: 'Relationship'
   has_many :followers, through: :reverse_relationships, source: :follower
 

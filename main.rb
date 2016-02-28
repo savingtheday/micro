@@ -8,6 +8,7 @@ set :database, "sqlite3:microblog.sqlite3"
 
 require './models/posts'
 require './models/users'
+require '.models/relationship'
 
 
 ################### GETS ################
@@ -115,7 +116,7 @@ post '/feed' do
 end
 
 post '/follow' do
-  current_user.follow!(User.where(username: params[:clicked_user]).first)
+  current_user.get_followers!(User.where(username: params[:clicked_user]).first)
   erb :followers
 end
 
