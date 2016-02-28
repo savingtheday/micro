@@ -14,12 +14,14 @@
       <span id="spice">Spice</span>   <span id="chat">Chat</span>
     </div>
     <div id="signInHeader">
+      <h1>
+      <a href="/feed">feed</a> |
       <% if current_user %>
-        <h1>
-          Hello <%= current_user.username %> | <a href=" /signout">sign out</a> | <a href="/delete">Delete Account</a>
+
+          Hello <%= current_user.username %> | <a href=" /signout">sign out</a> | <a href="/delete">delete account</a>
         </h1>
         <%else%>
-          <a href ="/sign_in">sign in</a>
+           <h1><a href ="/sign_in">sign in</a></h1>
         <% end %>
     </div>
   </div>

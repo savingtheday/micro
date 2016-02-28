@@ -96,10 +96,6 @@ post '/' do
   end
 end
 
-post '/feed' do
-  erb :feed
-end
-
 post '/change_profile' do
   redirect '/change-profile-success'
 end
@@ -112,6 +108,15 @@ post '/change-profile-success' do
   @user_birthday = params[:birthday]
   @current_user.update(username: @user_name, email: @user_email, password: @user_password, birthday: @user_birthday)
   redirect '/fullprofile'
+end
+
+post '/feed' do
+  erb :feed
+end
+
+post '/follow' do
+  current_user.follow!(User.where(username: params[:clicked_user]).first)
+  erb :followers
 end
 
 post '/new_post' do
