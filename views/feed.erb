@@ -1,7 +1,16 @@
-<div id="container"
+<div id="container">
 
 
-<% @posts.last(10).each do |post| %>
- <p><%= post.message %></p>
-<% end %>
+  <div id="centerColumn">
 
+
+  <p>
+  <span class="leftHeader">10 Most Recent Posts</span>
+  </p>
+
+
+    <% @posts.last(10).each do |post| %>
+     <p><%= post.message %></p>
+    <% end %>
+  </div>
+</div>
