@@ -1,0 +1,15 @@
+<div class="other_profile_container">
+  <div class="profile_info_container">
+    <form method="POST" action="/followers">
+        <input hidden name="clicked_user" value="<%= @clicked_user.username%>"/>
+        <button class="user_click">Follow <%= @clicked_user.username %></button>
+    </form>
+    <h2><%= @clicked_user.username%></h2>
+  </div>
+  <div class="profile_posts_container">
+    <% @clicked_user.posts.each do |post| %>
+    <p><%=post.content%></p>
+    <%end%>
+  </div>
+</div>
+

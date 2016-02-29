@@ -8,7 +8,7 @@ set :database, "sqlite3:microblog.sqlite3"
 
 require './models/posts'
 require './models/users'
-require './models/followerRelationships'
+require './models/followrelationships'
 
 
 ################### GETS ################
@@ -117,7 +117,7 @@ end
 
 get '/follow/:id' do
   puts params.inspect
-  @relationship = FollowerRelationship.new(follower_id: current_user.id, followed_id: params[:id])
+  @relationship = FollowRelationship.new(follower_id: current_user.id, followed_id: params[:id])
   erb :followers
 end
 
