@@ -1,20 +1,9 @@
-<div class="followList">
-  <% current_user.followers.each do |user| %>
-    <div class="post_username">
-      <form method="POST" action="/other">
-        <input hidden name="clicked_user" value="<%= user.username%>"/>
-        <button class="user_click"><h3><%= user.username %></h3></button>
-      </form>
-    </div>
-  <% end %>
-</div>
-<div class="followList">
-  <% current_user.follows.each do |user| %>
-    <div class="post_username">
-      <form method="POST" action="/other">
-        <input hidden name="clicked_user" value="<%= user.username%>"/>
-        <button class="user_click"><h3><%= user.username %></h3></button>
-      </form>
-    </div>
-  <% end %>
-</div>
+
+
+<h1>Who do you want to follow?</h1>
+<ol>
+<% @users.each do |user| %>
+  <li> <%= user.name %> <a href="<%= "/follow/#{user.id}" %>">follow</a> </li>
+<% end %>
+
+</ol>

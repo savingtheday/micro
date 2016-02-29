@@ -8,7 +8,7 @@ set :database, "sqlite3:microblog.sqlite3"
 
 require './models/posts'
 require './models/users'
-require '.models/relationship'
+require './models/followerRelationships'
 
 
 ################### GETS ################
@@ -37,7 +37,7 @@ get '/feed' do
 end
 
 get '/followers' do
-  current_user
+  @users = User.all
   erb :followers
 end
 
@@ -115,8 +115,9 @@ post '/feed' do
   erb :feed
 end
 
-post '/follow' do
-  current_user.get_followers!(User.where(username: params[:clicked_user]).first)
+get '/follow/:id' do
+  puts params.inspect
+  @relationship = FollowerRelationship.new(follower_id: current_user.id, followed_id: params[:id])
   erb :followers
 end
 
