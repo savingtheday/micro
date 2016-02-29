@@ -132,6 +132,8 @@ post '/post_success' do
   redirect '/feed'
 end
 
+
+
 post '/sign_in' do
   @user =User.where(username: params[:username]).first
   if @user && @user.password == params[:password]
