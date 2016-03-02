@@ -7,11 +7,17 @@
   <div id="centerColumn">
 
 
-  <p>
-  <span class="rightHeader">Sign In!</span>
-  </p>
 
-  <p>
+      <% if current_user %>
+
+      <span class="leftHeader">Welcome back!</span>
+
+        <%else%>
+
+
+    <p>
+    <span class="rightHeader">Sign In!</span>
+    </p>
     <form method="POST" action="/sign_in">
     <label for="username">Username</label>
     <input type="text" name="username">
@@ -21,7 +27,15 @@
     <input type="submit">
     </form>
     <H2> Not yet a member? <a href ="/sign_up"> Sign up!</a></H2>
+    <div id="signInHeader">
+      <h1>
 
+
+
+
+
+        <% end %>
+    </div>
 
   </div>
 </div>

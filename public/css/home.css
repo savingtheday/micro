@@ -65,6 +65,7 @@ a:visited{
   text-align: center;
   display: inline-block;
   float: left;
+  border-radius: 25px;
 }
 
 
@@ -83,6 +84,7 @@ a:visited{
   text-align: center;
   display: inline-block;
   float: left;
+  border-radius: 25px;
 }
 
 
@@ -103,6 +105,7 @@ a:visited{
   margin: 5%;
   text-align: center;
   padding: 10px;
+  border-radius: 25px;
 }
 
 /*footer*/
